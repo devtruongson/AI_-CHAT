@@ -1,12 +1,26 @@
-'use server';
-import { IResponse } from "@/utils/interface";
+import { GoogleGenerativeAI } from '@google/generative-ai';
+import { NextResponse } from 'next/server';
 
-export async function GetRuntimeAI(q: string): Promise<IResponse<any>> {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BE_BASE_URL}?q=${q}`, {
-        next: {
-            revalidate: 846000 * 30,
-        },
+export async function POST(req: Request) {
+    const { q } = await req.json();
+    const apiKey = 'AIzaSyCHIId7Q80cEF4PFDaJt6JwIG5EQuKUqvU';
+    const genAI = new GoogleGenerativeAI(apiKey);
+
+    const model = genAI.getGenerativeModel({
+        model: 'gemini-1.5-flash',
     });
-    const data = await res.json();
-    return data;
+
+    const chatSession = model.startChat({
+        generationConfig: {
+            temperature: 1,
+            topP: 0.95,
+            topK: 64,
+            maxOutputTokens: 8192,
+            responseMimeType: 'text/plain',
+        },
+        history: [],
+    });
+
+    const res = await chatSession.sendMessage(q);
+    return NextResponse.json(res);
 }

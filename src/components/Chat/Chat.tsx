@@ -65,7 +65,7 @@ const Chat: React.FC = () => {
     useEffect(() => {
         if (!divRenderChat.current) return;
         divRenderChat.current.scrollIntoView();
-    }, [data_chat]);
+    }, []);
 
     const handleGetAudioAndSend = () => {
         if (!refAudio.current) return;
