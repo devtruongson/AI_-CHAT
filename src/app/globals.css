@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+* {
+  box-sizing: border-box;
+}
+
+.micro-active {
+  background-color: #ccc;
+  padding         : 4px;
+  border-radius   : 50%;
+  animation       : FadeIn linear .2s alternate infinite;
+}
+
+@keyframes FadeIn {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.2);
+  }
+}
+
+
+.is-typing {
+  margin-top : 90px;
+  width      : 85px;
+  align-items: center;
+  gap        : 6px;
+  display    : flex;
+}
+
+.jump1,
+.jump2,
+.jump3,
+.jump4,
+.jump5 {
+  width           : 10px;
+  height          : 10px;
+  border-radius   : 100%;
+  background-color: rgb(75, 75, 202);
+}
+
+.jump1 {
+  animation      : typing 1.5s linear infinite;
+  animation-delay: 01.1s;
+}
+
+.jump2 {
+  animation      : typing 1.5s linear infinite;
+  animation-delay: 01.2s;
+}
+
+.jump3 {
+  animation      : typing 1.5s linear infinite;
+  animation-delay: 01.3s;
+}
+
+@keyframes typing {
+  0% {
+    transform: translateY(0px);
+  }
+
+  25% {
+    transform: translateY(0px);
+  }
+
+  35% {
+    transform: translateY(15px);
+  }
+
+  45% {
+    transform: translateY(0px);
+  }
+
+  60% {
+    transform: translateY(-15px);
+  }
+
+  75% {
+    background-color: white;
+    transform       : translateY(0px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.ant-table-cell {}
