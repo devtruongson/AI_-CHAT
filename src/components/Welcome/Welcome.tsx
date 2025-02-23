@@ -104,7 +104,7 @@ export const TopChatHeading: React.FC<{
                 {is_show_setting && (
                     <>
                         <span className="text-[12px] mr-2 opacity-[0.7]">
-                            Author by <a href="https://www.facebook.com/tsondev0911">Trường Sơn</a>
+                            Author by <a href="https://www.facebook.com/tsondev0911">Trung Nguyễn</a>
                         </span>
                         <SettingOutlined
                             onClick={() => {
